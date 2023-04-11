@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <div class="stat-wrapper">
         <div class="split space-between">
             <div class="bar">
@@ -98,4 +98,4 @@ export default defineComponent({
     bottom: 0px;
     outline: 1px solid transparent;
 }
-</style>
+</style>-->

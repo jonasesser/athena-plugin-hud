@@ -8,10 +8,10 @@ import ViewModel from '@AthenaClient/models/viewModel';
 import { VehicleData } from '../../../shared/information/vehicles';
 import { isVehicleType, VEHICLE_TYPE } from '../../../shared/enums/vehicleTypeFlags';
 import { SHARED_CONFIG } from '@AthenaShared/configurations/shared';
-import { GPVoice } from '../../gp-voice/client/src/voice';
 import { KEY_BINDS } from '@AthenaShared/enums/keyBinds';
-import IHudComponent from '../shared/interfaces/iHudComponent';
-import IClientInteraction from '../shared/interfaces/iClientInteraction';
+import IHudComponent from '../interfaces/iHudComponent';
+import IClientInteraction from '../interfaces/iClientInteraction';
+// import { GPVoice } from '../../gp-voice/client/src/voice';
 
 const PAGE_NAME = 'Hud';
 const RegisteredComponents: { [key: string]: IHudComponent } = {};
@@ -29,6 +29,7 @@ export class HudView {
         //TODO Interaction Controller Callback
         // InteractionController.addInfoCallback(HudView.setInteractions);
         // AthenaClient.systems.interaction.addInteractionCallback(HudView.addCustomInteraction);
+        // Keybind Key: 112 (F2)
         AthenaClient.systems.hotkeys.add({
             key: KEY_BINDS.HUD_SWITCH,
             description: 'Hud Switch',
@@ -109,7 +110,7 @@ class InternalFunctions implements ViewModel {
         }
     }
 
-    static metaChange(key: string, value: any) {
+/*    static metaChange(key: string, value: any) {
         if (key === 'voice' && alt.Voice.voiceControlsEnabled && alt.Player.local.meta.voice) {
             InternalFunctions.passComponentInfo(HUD_COMPONENT.MICROPHONE, false);
             AthenaClient.systems.hotkeys.add({
@@ -120,7 +121,7 @@ class InternalFunctions implements ViewModel {
                 keyUp: InternalFunctions.voiceUp
             });
         }
-    }
+    } */
 
     static async setVisible(value: boolean) {
         isDisabled = !value;
@@ -152,7 +153,7 @@ class InternalFunctions implements ViewModel {
         HudView.registerComponent(HUD_COMPONENT.INTERACTIONS, InternalFunctions.defaultInteractionsComponent, 500);
         HudView.registerComponent(HUD_COMPONENT.DEAD, InternalFunctions.defaultDeadComponent, 500);
         HudView.registerComponent(HUD_COMPONENT.IDENTIFIER, InternalFunctions.defaultIdentifier, 5000);
-        HudView.registerComponent(HUD_COMPONENT.MICROPHONE, InternalFunctions.defaultMicrophoneComponent, 100);
+//        HudView.registerComponent(HUD_COMPONENT.MICROPHONE, InternalFunctions.defaultMicrophoneComponent, 100);
 
         // Vehicle Components
         HudView.registerComponent(HUD_COMPONENT.IS_IN_VEHICLE, InternalFunctions.defaultIsInVehicleComponent, 1000);
@@ -456,9 +457,9 @@ class InternalFunctions implements ViewModel {
         InternalFunctions.passComponentInfo(propName, JSON.stringify(interactions.concat(customInteractions)), true);
     }
 
-    static defaultVoiceTalkingComponent(propName: string) {
-        InternalFunctions.passComponentInfo(propName, GPVoice.isTalking());
-    }
+    // static defaultVoiceTalkingComponent(propName: string) {
+    //    InternalFunctions.passComponentInfo(propName, GPVoice.isTalking());
+    // }
 
     // static defaultVoiceRangeComponent(propName: string) {
     //     InternalFunctions.passComponentInfo(
@@ -504,7 +505,7 @@ class InternalFunctions implements ViewModel {
         }
     }
 
-    static defaultMicrophoneComponent(propName: string) {
+/*    static defaultMicrophoneComponent(propName: string) {
         let microphoneVolume = alt.Player.local.getMeta('MICROPHONE_VOLUME');
         InternalFunctions.passComponentInfo(propName, microphoneVolume ? microphoneVolume : 0);
     }
@@ -522,7 +523,7 @@ class InternalFunctions implements ViewModel {
     static voiceVolume(newVolume: number = 100) {
         InternalFunctions.passComponentInfo(HUD_COMPONENT.MICROPHONE, newVolume);
     }
-
+*/
     static defaultIdentifier(propName: string) {
         InternalFunctions.passComponentInfo(
             propName,
@@ -531,7 +532,7 @@ class InternalFunctions implements ViewModel {
     }
 }
 
-alt.on('localMetaChange', InternalFunctions.metaChange);
+// alt.on('localMetaChange', InternalFunctions.metaChange);
 alt.onceServer(SYSTEM_EVENTS.TICKS_START, InternalFunctions.open);
 alt.onServer(SYSTEM_EVENTS.INTERACTION_TEXT_CREATE, HudView.addCustomInteraction);
 alt.onServer(SYSTEM_EVENTS.INTERACTION_TEXT_REMOVE, HudView.removeCustomInteraction);

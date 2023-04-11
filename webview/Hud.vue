@@ -3,18 +3,18 @@
         <div class="status-bars" v-if="hudState === hudStateNames.SHOW_HUD">
             <!-- <div class="key-info overline mb-4">[{{ switchKey }}]</div> -->
             <Health :value="dead ? 0 : health" />
-            <Voice
+            <!--<Voice
                 class="mb-2"
                 :value="range"
                 :range="range"
                 :rangeIndex="rangeIndex"
                 :rangeCount="rangeCount"
                 :isTalking="isTalking"
-            />
+            /> -->
             <!-- <Microphone :value="microphone" v-if="microphone !== undefined" /> -->
             <template v-if="!dead">
-                <Water :value="water" v-if="water <= 95" />
-                <Food :value="food" v-if="food <= 95" />
+                <Water :value="water" v-if="water <= 100" />
+                <Food :value="food" v-if="food <= 100" />
                 <Armour :value="armour" v-if="armour >= 5" />
             </template>
 
@@ -51,15 +51,15 @@
             />
         </div> -->
         <div class="info-placement mb-4">
-            <!-- <Cash class="mb-2" :value="cash" />
+        <!--    <Cash class="mb-2" :value="cash" />
             <Bank class="mb-2" :value="bank" />
-            <Time class="mb-2" :value="time" /> -->
+            <Time class="mb-2" :value="time" />-->
         </div>
         <div class="icon-placement">
-            <!-- <Water class="mb-2" :value="water" /> -->
-            <!-- <Food class="mb-2" :value="food" /> -->
-            <!-- <Armour class="mb-2" :value="armour" /> -->
-            <!-- <Health class="mb-2" :value="health" /> -->
+          <!--   <Water class="mb-2" :value="water" />
+            <Food class="mb-2" :value="food" />
+            <Armour class="mb-2" :value="armour" />
+            <Health class="mb-2" :value="health" />-->
             <!-- <Voice
                 class="mb-2"
                 :range="range"
@@ -69,13 +69,13 @@
             /> -->
         </div>
 
-        <!-- <div class="info-bars" v-if="hudState === hudStateNames.SHOW_WALLET">
+        <div class="info-bars" v-if="hudState === hudStateNames.SHOW_WALLET">
             <div class="key-info overline mb-4">[{{ switchKey }}]</div>
             <Cash class="mb-2" :value="cash" />
             <Bank class="mb-2" :value="bank" />
             <Identifier class="mb-2" :value="identifier" />
             <Time class="mb-2" :value="time" />
-        </div> -->
+        </div>
         <div class="hidden" v-if="hudState === hudStateNames.HIDDEN">
             <Icon :shadow="false" class="hidden-icon" icon="icon-eye" :size="32" />
         </div>
@@ -102,17 +102,17 @@ export default defineComponent({
     // Used to add Custom Components
     components: {
         Icon: defineAsyncComponent(() => import('@ViewComponents/Icon.vue')),
-        Armour: defineAsyncComponent(() => import('./components/Armour.vue')),
+    //  Armour: defineAsyncComponent(() => import('./components/Armour.vue')),
         Cash: defineAsyncComponent(() => import('./components/Cash.vue')),
         Food: defineAsyncComponent(() => import('./components/Food.vue')),
-        Microphone: defineAsyncComponent(() => import('./components/Microphone.vue')),
+        // Microphone: defineAsyncComponent(() => import('./components/Microphone.vue')),
         Interaction: defineAsyncComponent(() => import('./components/Interaction.vue')),
         Health: defineAsyncComponent(() => import('./components/Health.vue')),
         Water: defineAsyncComponent(() => import('./components/Water.vue')),
         Bank: defineAsyncComponent(() => import('./components/Bank.vue')),
         // SpeedoGP: defineAsyncComponent(() => import('./components/SpeedoGP.vue')),
         Time: defineAsyncComponent(() => import('./components/Time.vue')),
-        Voice: defineAsyncComponent(() => import('../../gp-voice/webview/components/Voice.vue')),
+        // Voice: defineAsyncComponent(() => import('../../gp-voice/webview/components/Voice.vue')),
         Speed: defineAsyncComponent(() => import('./components/Speed.vue')),
         Seatbelt: defineAsyncComponent(() => import('./components/Seatbelt.vue')),
         Engine: defineAsyncComponent(() => import('./components/Engine.vue')),
@@ -129,7 +129,7 @@ export default defineComponent({
             food: 85,
             water: 85,
             dead: undefined,
-            microphone: undefined,
+            //microphone: false,
             identifier: 999,
             cash: 5000000,
             bank: 1000000,
@@ -150,7 +150,7 @@ export default defineComponent({
             range: 1,
             rangeIndex: 0,
             rangeCount: 1,
-            isTalking: false,
+            //isTalking: false,
             type: 'default',
             mileage: 0,
             turnSignalsLeft: false,
