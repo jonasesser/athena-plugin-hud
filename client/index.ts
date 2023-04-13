@@ -8,7 +8,7 @@ import ViewModel from '@AthenaClient/models/viewModel';
 import { VehicleData } from '../../../shared/information/vehicles';
 import { isVehicleType, VEHICLE_TYPE } from '../../../shared/enums/vehicleTypeFlags';
 import { SHARED_CONFIG } from '@AthenaShared/configurations/shared';
-import { KEY_BINDS } from '@AthenaShared/enums/keyBinds';
+import { KEY_BINDS } from '../shared/keybinds';
 import IHudComponent from '../interfaces/iHudComponent';
 import IClientInteraction from '../interfaces/iClientInteraction';
 // import { GPVoice } from '../../gp-voice/client/src/voice';
