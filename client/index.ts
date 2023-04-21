@@ -9,8 +9,8 @@ import { VehicleData } from '../../../shared/information/vehicles';
 import { isVehicleType, VEHICLE_TYPE } from '../../../shared/enums/vehicleTypeFlags';
 import { SHARED_CONFIG } from '@AthenaShared/configurations/shared';
 import { KEY_BINDS } from '@AthenaShared/enums/keyBinds';
-import IHudComponent from '../interfaces/iHudComponent';
-import IClientInteraction from '../interfaces/iClientInteraction';
+import IHudComponent from '@AthenaPlugins/gp-hud/shared/interfaces/iHudComponent';
+import IClientInteraction from '@AthenaPlugins/gp-hud/shared/interfaces/iClientInteraction';
 // import { GPVoice } from '../../gp-voice/client/src/voice';
 
 const PAGE_NAME = 'Hud';
@@ -110,7 +110,7 @@ class InternalFunctions implements ViewModel {
         }
     }
 
-/*    static metaChange(key: string, value: any) {
+    /*    static metaChange(key: string, value: any) {
         if (key === 'voice' && alt.Voice.voiceControlsEnabled && alt.Player.local.meta.voice) {
             InternalFunctions.passComponentInfo(HUD_COMPONENT.MICROPHONE, false);
             AthenaClient.systems.hotkeys.add({
@@ -153,7 +153,7 @@ class InternalFunctions implements ViewModel {
         HudView.registerComponent(HUD_COMPONENT.INTERACTIONS, InternalFunctions.defaultInteractionsComponent, 500);
         HudView.registerComponent(HUD_COMPONENT.DEAD, InternalFunctions.defaultDeadComponent, 500);
         HudView.registerComponent(HUD_COMPONENT.IDENTIFIER, InternalFunctions.defaultIdentifier, 5000);
-//        HudView.registerComponent(HUD_COMPONENT.MICROPHONE, InternalFunctions.defaultMicrophoneComponent, 100);
+        //        HudView.registerComponent(HUD_COMPONENT.MICROPHONE, InternalFunctions.defaultMicrophoneComponent, 100);
 
         // Vehicle Components
         HudView.registerComponent(HUD_COMPONENT.IS_IN_VEHICLE, InternalFunctions.defaultIsInVehicleComponent, 1000);
@@ -168,7 +168,7 @@ class InternalFunctions implements ViewModel {
         HudView.registerComponent(HUD_COMPONENT.ENGINE, InternalFunctions.defaultEngineComponent, 100);
         HudView.registerComponent(HUD_COMPONENT.LOCK, InternalFunctions.defaultLockComponent, 100);
         HudView.registerComponent(HUD_COMPONENT.METRIC, InternalFunctions.defaultMetricComponent, 2500);
-       
+
         // TODO - Tacho erweiterung
         // HudView.registerComponent(HUD_COMPONENT.FUEL, InternalFunctions.defaultFuelComponent, 100);
         // HudView.registerComponent(HUD_COMPONENT.FUELTANK, InternalFunctions.defaultFueltankComponent, 2500);
@@ -505,7 +505,7 @@ class InternalFunctions implements ViewModel {
         }
     }
 
-/*    static defaultMicrophoneComponent(propName: string) {
+    /*    static defaultMicrophoneComponent(propName: string) {
         let microphoneVolume = alt.Player.local.getMeta('MICROPHONE_VOLUME');
         InternalFunctions.passComponentInfo(propName, microphoneVolume ? microphoneVolume : 0);
     }
